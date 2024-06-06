@@ -79,8 +79,26 @@ public class courseDetails extends HttpServlet {
 			String courseName =action;
 			LocalDate d=LocalDate.now();
 		    String date=d.toString();
+		    learnerdetail.setCourseid(id);
+		    learnerdetail.setCourseName(courseName);
+		    learnerdetail.setDate(date);
+		    System.out.println(date);
 		    response.sendRedirect("payment.jsp");
+		    HttpSession session = request.getSession(false);
+		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    int iid= obj1.getId();
+		    String name=obj1.getName();
+		    System.out.println(iid);
+		    System.out.println(name);
+		   
+		    try {
+				obj.learnerdetails(learnerdetail,iid,name);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		    break;
+		    
 		}
 		
 		case"css":
@@ -90,7 +108,25 @@ public class courseDetails extends HttpServlet {
 			String courseName =action;
 			LocalDate d=LocalDate.now();
 		    String date=d.toString();
+		    learnerdetail.setCourseid(id);
+		    learnerdetail.setCourseName(courseName);
+		    learnerdetail.setDate(date);
+		    System.out.println(date);
 		    response.sendRedirect("payment.jsp");
+		    HttpSession session = request.getSession(false);
+		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    int iid= obj1.getId();
+		    String name=obj1.getName();
+		    System.out.println(iid);
+		    System.out.println(name);
+		   
+		    try {
+				obj.learnerdetails(learnerdetail,iid,name);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
 		    break;
 		}
 		
@@ -101,8 +137,26 @@ public class courseDetails extends HttpServlet {
 			String courseName =action;
 			LocalDate d=LocalDate.now();
 		    String date=d.toString();
+		    learnerdetail.setCourseid(id);
+		    learnerdetail.setCourseName(courseName);
+		    learnerdetail.setDate(date);
+		    System.out.println(date);
 		    int amount=2000;
 		    response.sendRedirect("payment.jsp");
+		    HttpSession session = request.getSession(false);
+		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    int iid= obj1.getId();
+		    String name=obj1.getName();
+		    System.out.println(iid);
+		    System.out.println(name);
+		   
+		    try {
+				obj.learnerdetails(learnerdetail,iid,name);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    break;
 		}
 		
 		

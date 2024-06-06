@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.servlet.http.HttpSession;
+
 import com.academy.model.courseP;
 import com.academy.model.trainingTableP;
 import com.academy.util.tableConnection;
@@ -14,6 +16,8 @@ import com.academy.util.tableConnection;
 
 
 public class trainingImpl implements trainingDAO {
+	
+
 	
 
 	public void insert(trainingTableP table) throws ClassNotFoundException, SQLException {
@@ -144,7 +148,20 @@ public class trainingImpl implements trainingDAO {
        p.execute();
    }
 
-
+  public void updatepayment(courseP payment ,int id)throws ClassNotFoundException,SQLException
+  {
+	  Connection con=tableConnection.getConnection();
+	 
+	  String pay="paid";
+	  String query="UPDATE learner_details SET accountnumber=?,payment=? WHERE learner_id=?";
+	  PreparedStatement p = con.prepareStatement(query);
+	  p.setString(1,payment.getAccoutNumber());
+	  p.setString(2,pay);
+	  p.setInt(3, id);
+	  p.executeUpdate();
+	  
+	  		
+  }
 }
 	
 

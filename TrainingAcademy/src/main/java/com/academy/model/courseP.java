@@ -4,7 +4,7 @@ public class courseP {
  int courseid;
  String CourseName;
  String paymentType;
- long AccoutNumber;
+ String AccoutNumber;
  String date;
  int amount;
 public int getCourseid() {
@@ -25,11 +25,11 @@ public String getPaymentType() {
 public void setPaymentType(String paymentType) {
 	this.paymentType = paymentType;
 }
-public long getAccoutNumber() {
+public String getAccoutNumber() {
 	return AccoutNumber;
 }
-public void setAccoutNumber(long accoutNumber) {
-	AccoutNumber = accoutNumber;
+public void setAccoutNumber(String accountnumber) {
+	AccoutNumber = accountnumber;
 }
 public String getDate() {
 	return date;
@@ -43,7 +43,7 @@ public int getAmount() {
 public void setAmount(int amount) {
 	this.amount = amount;
 }
-public courseP(int courseid, String courseName, String paymentType, long accoutNumber, String date, int amount) {
+public courseP(int courseid, String courseName, String paymentType, String accoutNumber, String date, int amount) {
 	super();
 	this.courseid = courseid;
 	CourseName = courseName;

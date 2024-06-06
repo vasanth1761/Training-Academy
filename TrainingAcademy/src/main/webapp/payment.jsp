@@ -63,7 +63,7 @@
 
 <h2>Payment</h2>
 
-<form action="/process_payment" method="post">
+<form action="paymentDetailss" method="get">
   <label for="card_type">Select Card Type:</label>
   <select id="card_type" name="card_type">
     <option value="credit">Credit Card</option>
@@ -71,14 +71,14 @@
   </select>
   
   <label for="card_number">Card Number:</label>
-  <input type="text" id="card_number" name="card_number" required>
+  <input type="text" id="card_number" name="card_number">
   
   <label for="expiry_date">Expiry Date:</label>
-  <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+  <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY">
   
   <label for="cvv">CVV:</label>
-  <input type="text" id="cvv" name="cvv" required>
-  
+  <input type="text" id="cvv" name="cvv">
+  <input type="hidden" name="action" value="paid">
   <input type="submit" value="Pay">
 </form>
 

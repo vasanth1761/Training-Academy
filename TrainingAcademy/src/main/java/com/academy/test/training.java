@@ -105,7 +105,7 @@ public class training extends HttpServlet {
 
 		}
 		}
-
+        
 //		try {
 //			obj.insert(table);
 //		} catch (ClassNotFoundException e) {
