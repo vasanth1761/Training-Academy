@@ -54,7 +54,7 @@ public class courseDetails extends HttpServlet {
 		    learnerdetail.setCourseName(courseName);
 		    learnerdetail.setDate(date);
 		    System.out.println(date);
-		    response.sendRedirect("payment.jsp");
+		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
 		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
 		    int iid= obj1.getId();

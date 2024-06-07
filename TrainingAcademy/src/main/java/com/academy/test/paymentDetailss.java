@@ -52,6 +52,7 @@ public class paymentDetailss extends HttpServlet {
 	    System.out.println(id);
 	    try {
 			pay.updatepayment(payment,id);
+			response.sendRedirect("paymentsuccessfull.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

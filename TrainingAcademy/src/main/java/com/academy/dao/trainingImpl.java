@@ -9,6 +9,7 @@ import java.util.Scanner;
 import javax.servlet.http.HttpSession;
 
 import com.academy.model.courseP;
+import com.academy.model.questionsP;
 import com.academy.model.trainingTableP;
 import com.academy.util.tableConnection;
 
@@ -73,8 +74,7 @@ public class trainingImpl implements trainingDAO {
    public boolean login(trainingTableP table) throws ClassNotFoundException, SQLException {
 		
 	
-		Scanner sc = new Scanner(System.in);
-		Connection con = tableConnection.getConnection();
+	    Connection con = tableConnection.getConnection();
 		
 		String query = "SELECT user_mailid,user_password FROM users WHERE user_mailid=?and user_password=?";
 		PreparedStatement p = con.prepareStatement(query);
@@ -162,6 +162,20 @@ public class trainingImpl implements trainingDAO {
 	  
 	  		
   }
-}
+  public void insertQuestion(questionsP insert)throws ClassNotFoundException,SQLException
+  {
+	  Connection con=tableConnection.getConnection();
+	  String query="insert into question (questions,option_1,option_2,option_3,option_4,correct_answer)values(?,?,?,?,?,?)";
+	  PreparedStatement p = con.prepareStatement(query);
+	  p.setString(1,insert.getQuestion());
+	  p.setString(2, insert.getOptionA());
+	  p.setString(3, insert.getOptionB());
+	  p.setString(4, insert.getOptionC());
+	  p.setString(5, insert.getOptionD());
+	  p.setString(6, insert.getCorrectAnswer());
+	  p.executeUpdate();
+  }
+  }
+
 	
 
