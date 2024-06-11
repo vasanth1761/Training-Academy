@@ -59,6 +59,14 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+            const errorMessage = '<%= request.getAttribute("errorMessage") %>';
+            if (errorMessage && errorMessage !== 'null') {
+                alert(errorMessage);
+            }
+        });
+ </script>   
 <body>
 <div>
 <form id="registerForm" action="training" method="get">

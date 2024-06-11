@@ -71,7 +71,7 @@
   <div class="box">
     <div class="card">
     <img alt="image not working" src="image/java.jpg">
-    <input type="hidden" name="action" value="Java">
+    <input type="hidden" name="action" value="java">
     <button type="submit">Enroll</button>
     </div>
   </div>
@@ -80,7 +80,7 @@
   <div class="box">
     <div class="card">
     <img alt="image not working" src="image/html.png">
-    <input type="hidden" name="action" value="Html">
+    <input type="hidden" name="action" value="html">
     <button type="submit">Enroll</button>
     </div>
   </div>

@@ -160,7 +160,7 @@
 </head>
 <body>
     <nav>
-        <h1>CourseHub</h1>
+        <h1>Systech</h1>
         <div class="dropdown">
             <p class="dropbtn">Categories</p>
             <div class="dropdown-content">

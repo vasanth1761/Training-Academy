@@ -42,21 +42,22 @@ public class courseDetails extends HttpServlet {
 		courseP learnerdetail=new courseP();
 		switch (action) {
 		
-		case "Java":
+		case "java":
 		{
 			trainingImpl obj = new trainingImpl();
 			int id=4000;
 			String courseName =action;
 			LocalDate d=LocalDate.now();
 		    String date=d.toString();
-//		    String duedate=due.toString();
 		    learnerdetail.setCourseid(id);
 		    learnerdetail.setCourseName(courseName);
 		    learnerdetail.setDate(date);
-		    System.out.println(date);
+		    String course=learnerdetail.getCourseName();
 		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
 		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    session.setAttribute("jack",course);
+		    String cours=(String) session.getAttribute("jack");
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
 		    System.out.println(iid);
@@ -72,7 +73,7 @@ public class courseDetails extends HttpServlet {
 		    
 		}
 		
-		case "Html":
+		case "html":
 		{
 			trainingImpl obj = new trainingImpl();
 			int id=4001;
@@ -82,10 +83,12 @@ public class courseDetails extends HttpServlet {
 		    learnerdetail.setCourseid(id);
 		    learnerdetail.setCourseName(courseName);
 		    learnerdetail.setDate(date);
-		    System.out.println(date);
-		    response.sendRedirect("payment.jsp");
+		    String course=learnerdetail.getCourseName();
+		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
 		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    session.setAttribute("jack",course);
+		    String cours=(String) session.getAttribute("jack");
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
 		    System.out.println(iid);
@@ -111,10 +114,12 @@ public class courseDetails extends HttpServlet {
 		    learnerdetail.setCourseid(id);
 		    learnerdetail.setCourseName(courseName);
 		    learnerdetail.setDate(date);
-		    System.out.println(date);
-		    response.sendRedirect("payment.jsp");
+		    String course=learnerdetail.getCourseName();
+		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
 		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    session.setAttribute("jack",course);
+		    String cours=(String) session.getAttribute("jack");
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
 		    System.out.println(iid);
@@ -126,7 +131,6 @@ public class courseDetails extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		    
 		    break;
 		}
 		
@@ -140,11 +144,12 @@ public class courseDetails extends HttpServlet {
 		    learnerdetail.setCourseid(id);
 		    learnerdetail.setCourseName(courseName);
 		    learnerdetail.setDate(date);
-		    System.out.println(date);
-		    int amount=2000;
-		    response.sendRedirect("payment.jsp");
+		    String course=learnerdetail.getCourseName();
+		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
 		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    session.setAttribute("jack",course);
+		    String cours=(String) session.getAttribute("jack");
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
 		    System.out.println(iid);

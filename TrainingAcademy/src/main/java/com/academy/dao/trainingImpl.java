@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +13,11 @@ import javax.servlet.http.HttpSession;
 import com.academy.model.courseP;
 import com.academy.model.questionsP;
 import com.academy.model.trainingTableP;
+import com.academy.model.videoP;
+import com.academy.test.question;
 import com.academy.util.tableConnection;
+import com.mysql.cj.protocol.Resultset;
+
 
 
 
@@ -165,7 +171,7 @@ public class trainingImpl implements trainingDAO {
   public void insertQuestion(questionsP insert)throws ClassNotFoundException,SQLException
   {
 	  Connection con=tableConnection.getConnection();
-	  String query="insert into question (questions,option_1,option_2,option_3,option_4,correct_answer)values(?,?,?,?,?,?)";
+	  String query="insert into question (questions,option_1,option_2,option_3,option_4,correct_answer,category)values(?,?,?,?,?,?,?)";
 	  PreparedStatement p = con.prepareStatement(query);
 	  p.setString(1,insert.getQuestion());
 	  p.setString(2, insert.getOptionA());
@@ -173,9 +179,78 @@ public class trainingImpl implements trainingDAO {
 	  p.setString(4, insert.getOptionC());
 	  p.setString(5, insert.getOptionD());
 	  p.setString(6, insert.getCorrectAnswer());
+	  p.setString(7,insert.getCourse());
+	  System.out.println(insert.getCourse());
 	  p.executeUpdate();
   }
+  public List<questionsP> getAllQuestionsByCategory(String category) throws ClassNotFoundException, SQLException {
+      List<questionsP> questions = new ArrayList<questionsP>();
+      questionsP insert=new questionsP();
+      System.out.println(category);
+      System.out.println("vasanth");
+      String course = insert.getCourse();
+      String option=insert.getOptionA();
+	Connection con=tableConnection.getConnection();
+    String query = "SELECT * FROM question WHERE category = ?";
+    PreparedStatement p = con.prepareStatement(query);
+    p.setString(1, category);
+    ResultSet re = p.executeQuery();
+    while (re.next()) {
+        questionsP question = new questionsP();
+        question.setId(re.getString("id"));
+        question.setQuestion(re.getString("questions"));
+        question.setOptionA(re.getString("option_1"));
+        question.setOptionB(re.getString("option_2"));
+        question.setOptionC(re.getString("option_3"));
+        question.setOptionD(re.getString("option_4"));
+        question.setCorrectAnswer(re.getString("correct_answer"));
+        questions.add(question);
+        System.out.println(question.getId());
+    }
+    return questions;
   }
+  public static  void delete(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
 
+		Connection con = tableConnection.getConnection();
+		String query = "DELETE FROM question WHERE id=?";
+		PreparedStatement p = con.prepareStatement(query);
+		p.setInt(1, id);
+		p.executeUpdate();
+}
+  public static  void insertVideo(videoP video) throws ClassNotFoundException, SQLException{
+	  Connection con = tableConnection.getConnection();
+	  String inserting = "INSERT INTO Videos (VideoTitle, VideoLink, Category) VALUES (?, ?, ?)";
+	  PreparedStatement p = con.prepareStatement(inserting);
+	  p.setString(1, video.getTitle());
+      p.setString(2, video.getLink());
+      p.setString(3, video.getCategory());
+      System.out.println(video.getLink());
+      p.executeUpdate();
+  }
+  
+  public List<videoP> getAllVideo(String cours ) throws ClassNotFoundException, SQLException {
+      List<videoP> videos = new ArrayList<videoP>();
+      Connection con = tableConnection.getConnection();
+      
+      String getvideo = "SELECT * FROM Videos WHERE category=?";
+      PreparedStatement p = con.prepareStatement(getvideo);
+      p.setString(1, cours);
+      ResultSet re = p.executeQuery();
+      while (re.next()) {
+          // Retrieve data from the result set
+    	  videoP get=new videoP();
+          get.setId(re.getString("VideoID")); 
+          get.setTitle(re.getString("VideoTitle"));          
+          get.setLink(re.getString("VideoLink"));
+          System.out.println( get.getId());
+          System.out.println(get.getTitle());
+          System.out.println(get.getLink());
+          videos.add(get);
+
+}
+      return videos;
+}
+}
 	
 

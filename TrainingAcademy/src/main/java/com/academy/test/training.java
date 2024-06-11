@@ -89,7 +89,7 @@ public class training extends HttpServlet {
 					}
 //					
 				} else {
-
+					request.setAttribute("errorMessage", "you dont have an account please Register");
 					response.sendRedirect("Register.jsp");
 				}
 			}

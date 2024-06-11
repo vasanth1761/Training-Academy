@@ -69,7 +69,7 @@
     <ul>
         <li><a href="">Home</a></li>
         <li><a href="insertquestion.jsp">Add Question</a></li>
-        <li><a href="#add-video">Add Video</a></li>
+        <li><a href="insertvideo.jsp">Add Video</a></li>
         <li><a href="#learner-list">List of Learners</a></li>
         <li><a href="#payment-details">Payment Details</a></li>
     </ul>
