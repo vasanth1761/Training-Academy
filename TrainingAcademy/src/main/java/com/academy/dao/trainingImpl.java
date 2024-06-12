@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
@@ -250,6 +252,26 @@ public class trainingImpl implements trainingDAO {
 
 }
       return videos;
+}
+  public Map<String, String> getCorrectAnswersFromDatabase() throws ClassNotFoundException, SQLException {
+      // Replace this with your logic to fetch correct answers from the database
+      // Example:
+      // Map<String, String> correctAnswersMap = yourDatabaseService.getCorrectAnswers();
+      // return correctAnswersMap;
+	  Map<String, String> answersMap = new HashMap<>();
+	  Connection con = tableConnection.getConnection();
+	  String query = "SELECT id,correct_answer from question";
+	  PreparedStatement p = con.prepareStatement(query);
+      ResultSet re = p.executeQuery();
+      while (re.next()) {
+    	 String id= re.getString("id"); 
+    	 String option= re.getString("correct_answer");
+    	 answersMap.put(id, option);
+    	
+
+      }
+      return answersMap;
+      
 }
 }
 	
