@@ -2,6 +2,7 @@ package com.academy.test;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.academy.dao.trainingImpl;
+import com.academy.model.resultP;
+import com.academy.model.trainingTableP;
+
 
 /**
  * Servlet implementation class CheckResult
@@ -83,14 +88,14 @@ public class CheckResult extends HttpServlet {
             double percentage = (correctCount * 100.0) / totalCount;
 
             // Set result attributes to be forwarded to the result JSP page
+            HttpSession session = request.getSession(false);
+		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
+		    String course=(String) session.getAttribute("jack");
+		    String name=obj1.getName();
             request.setAttribute("totalCount", totalCount);
             request.setAttribute("correctCount", correctCount);
             request.setAttribute("percentage", percentage);
-            System.out.println(totalCount);
-            System.out.println(correctCount);
-            System.out.println(percentage);
-
-            // Forward the request to the result JSP page
+            request.setAttribute("name",name);
             RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
             dispatcher.forward(request, response);
         }

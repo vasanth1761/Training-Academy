@@ -41,6 +41,17 @@
         }
     </style>
 </head>
+<script>
+        function confirmRedirect() {
+            var confirmation = confirm("<%= (String)request.getAttribute("confirmMessage") %>");
+            if (confirmation) {
+                window.location.href = "questionoutput.jsp";
+            } else {
+                // Handle if user cancels the confirmation
+                window.location.href = "someOtherPage.jsp"; // Redirect to another page or do nothing
+            }
+        }
+    </script>
 <body>
  <center><h1>Take Quiz</h1></center>
     <div class="container">

@@ -74,7 +74,6 @@ public class training extends HttpServlet {
 					trainingTableP id = obj.getid(table);
 					System.out.println(id);
 					HttpSession session = request.getSession();
-					System.out.println(id);
 					session.setAttribute("userid", id);
 //					response.sendRedirect("welcome.jsp");
 //					trainingTableP check=obj.checkAdmin(table);
