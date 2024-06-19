@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.trainingTableP;
-import com.academy.model.videoP;
+import com.academy.model.TrainingTable;
+import com.academy.model.VideoInsert;
 
 /**
  * Servlet implementation class videoCategory
@@ -28,36 +28,35 @@ public class videoCategory extends HttpServlet {
      */
     public videoCategory() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		
 		HttpSession session = request.getSession(false);
-		String cours=(String) session.getAttribute("jack");
-		System.out.println(cours);
+		String cours=(String) session.getAttribute("course");
 		trainingImpl videoop= new trainingImpl();
 		switch(cours)
 		{
 		case"java":
 		{   
 			try {
-				List<videoP>output=videoop.getAllVideo(cours);
+				List<VideoInsert>output=videoop.getAllVideo(cours);
 				request.setAttribute("opvideo",output);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
@@ -67,22 +66,23 @@ public class videoCategory extends HttpServlet {
 		case"html":
 		{   
 			try {
-				List<videoP>output=videoop.getAllVideo(cours);
+				List<VideoInsert>output=videoop.getAllVideo(cours);
 				request.setAttribute("opvideo",output);
+				
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
 	            dispatcher.forward(request, response);
+	            break;
 		}
 		case"css":
 		{   
 			try {
-				List<videoP>output=videoop.getAllVideo(cours);
+				List<VideoInsert>output=videoop.getAllVideo(cours);
 				request.setAttribute("opvideo",output);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
@@ -92,16 +92,18 @@ public class videoCategory extends HttpServlet {
 		case"angular":
 		{   
 			try {
-				List<videoP>output=videoop.getAllVideo(cours);
+				List<VideoInsert>output=videoop.getAllVideo(cours);
 				request.setAttribute("opvideo",output);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
 	            dispatcher.forward(request, response);
 	            break;
 		}
+		default:
+			response.sendRedirect("readytopay.jsp");
+		
 	}
 
 	

@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  <%@page import="com.academy.model.TrainingTable"%>
-!DOCTYPE html>
+     <%@page import="com.academy.model.TrainingTable"%>
+<<!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,19 +48,24 @@
         margin-bottom: 10px; 
     }
 
-    .card button {
+    .card .enroll-link {
         margin-top: 20px;
+    }
+
+    .card .enroll-link a {
         background-color: #007bff;
         color: #fff;
         border: none;
         padding: 10px 20px;
         font-size: 16px;
         border-radius: 5px;
+        text-decoration: none; 
+        display: inline-block;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
-    .card button:hover {
+    .card .enroll-link a:hover {
         background-color: #0056b3;
     }
 
@@ -86,15 +90,13 @@
     .navbar .profile-section {
         display: flex;
         align-items: center;
-        cursor: pointer; 
-        position: relative; 
+        cursor: pointer; /* Add cursor pointer */
     }
 
     .navbar img {
         width: 30px;
         height: 30px;
         margin-right: 10px;
-        border-radius: 50%; 
     }
 
     .dropdown-content {
@@ -103,10 +105,11 @@
         background-color: #fff;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
-        right: 0;
-        top: 40px;
         min-width: 160px;
+        text-align: left;
         border-radius: 8px;
+        top: 40px; 
+        right: 0; 
     }
 
     .dropdown-content a {
@@ -141,47 +144,42 @@
 </div>
 
 <div class="container">
-    <form action="courseDetails" method="get">
-        <div class="box">
-            <div class="card">
-                <img alt="Software Course" src="image/java.jpg">
-                <input type="hidden" name="action" value="java">
-                <button type="submit">Enroll</button>
+    <div class="box">
+        <div class="card">
+            <img alt="Software Course" src="image/software.jpg">
+            <div class="enroll-link">
+                <a href="course.jsp">Enroll</a>
             </div>
         </div>
-    </form>
+    </div>
   
-    <form action="courseDetails" method="get">
-        <div class="box">
-            <div class="card">
-                <img alt="Business Course" src="image/html.png">
-                <input type="hidden" name="action" value="html">
-                <button type="submit">Enroll</button>
+    <div class="box">
+        <div class="card">
+            <img alt="Business Course" src="image/business1.jpg">
+            <div class="enroll-link">
+                <a href="courseDetails?action=html">Enroll</a>
             </div>
         </div>
-    </form>
+    </div>
   
-    <form action="courseDetails" method="get">
-        <div class="box">
-            <div class="card">
-                <img alt="Marketing Course" src="image/css.jpg">
-                <input type="hidden" name="action" value="css">
-                <button type="submit">Enroll</button>
+    <div class="box">
+        <div class="card">
+            <img alt="Marketing Course" src="image/marketing.png">
+            <div class="enroll-link">
+                <a href="courseDetails?action=css">Enroll</a>
             </div>
         </div>
-    </form>
+    </div>
  
-    <form action="courseDetails" method="get">
-        <div class="box">
-            <div class="card">
-                <img alt="Finance Course" src="image/Angular.jpg">
-                <input type="hidden" name="action" value="angular">
-                <button type="submit">Enroll</button>
+    <div class="box">
+        <div class="card">
+            <img alt="Finance Course" src="image/finance.jpg">
+            <div class="enroll-link">
+                <a href="courseDetails?action=angular">Enroll</a>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 </body>
 </html>
-  

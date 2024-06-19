@@ -1,14 +1,15 @@
 package com.academy.model;
 
-public class resultP {
-	String learnerid;
+public class Result {
+	int learnerid;
 	String learnername;
 	String cousename;
 	String attemptedquestion;
-	String correctanswer;
-	int percentage;
-	public resultP(String learnerid, String learnername, String cousename, String attemptedquestion,
-			String correctanswer, int percentage) {
+	int correctanswer;
+	double percentage;
+	String comments;
+	public Result(int learnerid, String learnername, String cousename, String attemptedquestion, int correctanswer,
+			double percentage, String comments) {
 		super();
 		this.learnerid = learnerid;
 		this.learnername = learnername;
@@ -16,14 +17,25 @@ public class resultP {
 		this.attemptedquestion = attemptedquestion;
 		this.correctanswer = correctanswer;
 		this.percentage = percentage;
+		this.comments = comments;
 	}
-	public resultP(int id, String name, String course, int totalCount, int correctCount, double percentage) {
-		// TODO Auto-generated constructor stub
+	public String getComments() {
+		return comments;
 	}
-	public String getLearnerid() {
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	
+	public Result(int id, String name, String course, int totalCount, int correctCount, double percentage) {
+
+	}
+	public Result() {
+
+	}
+	public int getLearnerid() {
 		return learnerid;
 	}
-	public void setLearnerid(String learnerid) {
+	public void setLearnerid(int learnerid) {
 		this.learnerid = learnerid;
 	}
 	public String getLearnername() {
@@ -44,16 +56,16 @@ public class resultP {
 	public void setAttemptedquestion(String attemptedquestion) {
 		this.attemptedquestion = attemptedquestion;
 	}
-	public String getCorrectanswer() {
+	public int getCorrectanswer() {
 		return correctanswer;
 	}
-	public void setCorrectanswer(String correctanswer) {
-		this.correctanswer = correctanswer;
+	public void setCorrectanswer(int correctCount) {
+		this.correctanswer = correctCount;
 	}
-	public int getPercentage() {
+	public double getPercentage() {
 		return percentage;
 	}
-	public void setPercentage(int percentage) {
+	public void setPercentage(double percentage) {
 		this.percentage = percentage;
 	}
 

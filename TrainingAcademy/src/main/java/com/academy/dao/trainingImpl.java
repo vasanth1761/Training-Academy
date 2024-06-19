@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,11 +13,12 @@ import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
 
-import com.academy.model.courseP;
-import com.academy.model.questionsP;
-import com.academy.model.trainingTableP;
-import com.academy.model.videoP;
-import com.academy.test.question;
+import com.academy.model.Course;
+import com.academy.model.Questions;
+import com.academy.model.Result;
+import com.academy.model.TrainingTable;
+import com.academy.model.VideoInsert;
+import com.academy.test.Question;
 import com.academy.util.tableConnection;
 import com.mysql.cj.protocol.Resultset;
 
@@ -29,8 +31,8 @@ public class trainingImpl implements trainingDAO {
 
 	
 
-	public void insert(trainingTableP table) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+	public void insert(TrainingTable table) throws ClassNotFoundException, SQLException {
+
 		Connection con = tableConnection.getConnection();
 		String query = "insert into training_logindetails (user_name, user_email, user_phonenumber,user_password)values(?,?,?,?)";
 		PreparedStatement p = con.prepareStatement(query);
@@ -46,11 +48,11 @@ public class trainingImpl implements trainingDAO {
 	@Override
 	public boolean insert() throws ClassNotFoundException, SQLException {
 		return false;
-		// TODO Auto-generated method stub
+
 		
 	}
 
-   public boolean register(trainingTableP table) throws ClassNotFoundException, SQLException {
+   public boolean register(TrainingTable table) throws ClassNotFoundException, SQLException {
 		
 		Connection con = tableConnection.getConnection();
 		
@@ -67,19 +69,15 @@ public class trainingImpl implements trainingDAO {
 			p.setString(3, table.getPhone());
 			p.setString(4, table.getPassword());
 			p.execute();
-			System.out.println("registered  successfull");
-			return true;
+		    return  true;
 		}  
-//			Systemelse.err.println("you already have an account");
-//			System.err.println("please login ");
-////			login();
-//			System.out.println("Registered Successfully ");
+
 
 		
 		return false;
 	
 	}
-   public boolean login(trainingTableP table) throws ClassNotFoundException, SQLException {
+   public boolean login(TrainingTable table) throws ClassNotFoundException, SQLException {
 		
 	
 	    Connection con = tableConnection.getConnection();
@@ -99,7 +97,7 @@ public class trainingImpl implements trainingDAO {
 		
 
 	}
-   public trainingTableP getid(trainingTableP table)throws ClassNotFoundException,SQLException
+   public TrainingTable getid(TrainingTable table)throws ClassNotFoundException,SQLException
    {
 	   Connection con=tableConnection.getConnection();
 	   String query="SELECT *FROM users WHERE user_mailid=?";
@@ -110,8 +108,6 @@ public class trainingImpl implements trainingDAO {
 	   {
 		   int id=re.getInt("user_id");
 		   String name=re.getString("user_name");
-		   System.out.println(id);
-		   System.out.println(name);
 		   table.setId(id);
 		   table.setName(name);
 		   return table;
@@ -122,7 +118,7 @@ public class trainingImpl implements trainingDAO {
 	   
    }
    
-   public trainingTableP checkAdmin(trainingTableP table)throws ClassNotFoundException,SQLException
+   public TrainingTable checkAdmin(TrainingTable table)throws ClassNotFoundException,SQLException
    {
 	   Connection con=tableConnection.getConnection();
 	   String query="SELECT user_mailid,user_password FROM users WHERE user_mailid=?and user_password=?";
@@ -141,36 +137,44 @@ public class trainingImpl implements trainingDAO {
 	    }
 		
    }
-   public void learnerdetails(courseP learnerdetail,int iid,String name) throws ClassNotFoundException,SQLException
+   public void learnerdetails(Course learnerdetail,int iid,String name) throws ClassNotFoundException,SQLException
    {
 	   Connection con=tableConnection.getConnection();
 	   String date=learnerdetail.getDate();
-	   System.out.println(date);
 	   String query="insert into learner_details (learner_id,leaner_name,course_id,course_name,enroll_date)values(?,?,?,?,?)";
 	   PreparedStatement p = con.prepareStatement(query);
+	   try {
 	   p.setInt(1,iid);
        p.setString(2,name);
        p.setInt(3,learnerdetail.getCourseid());
        p.setString(4,learnerdetail.getCourseName());
        p.setString(5,learnerdetail.getDate());
        p.execute();
+	   }
+       finally {
+ 		  p.close();
+ 	  }
    }
 
-  public void updatepayment(courseP payment ,int id)throws ClassNotFoundException,SQLException
+  public void updatepayment(Course payment ,int id)throws ClassNotFoundException,SQLException
   {
 	  Connection con=tableConnection.getConnection();
 	 
 	  String pay="paid";
 	  String query="UPDATE learner_details SET accountnumber=?,payment=? WHERE learner_id=?";
 	  PreparedStatement p = con.prepareStatement(query);
+	  try {
 	  p.setString(1,payment.getAccoutNumber());
 	  p.setString(2,pay);
 	  p.setInt(3, id);
 	  p.executeUpdate();
-	  
+	  }
+	  finally {
+		  p.close();
+	  }
 	  		
   }
-  public void insertQuestion(questionsP insert)throws ClassNotFoundException,SQLException
+  public void insertQuestion(Questions insert)throws ClassNotFoundException,SQLException
   {
 	  Connection con=tableConnection.getConnection();
 	  String query="insert into question (questions,option_1,option_2,option_3,option_4,correct_answer,category)values(?,?,?,?,?,?,?)";
@@ -182,14 +186,12 @@ public class trainingImpl implements trainingDAO {
 	  p.setString(5, insert.getOptionD());
 	  p.setString(6, insert.getCorrectAnswer());
 	  p.setString(7,insert.getCourse());
-	  System.out.println(insert.getCourse());
+	 
 	  p.executeUpdate();
   }
-  public List<questionsP> getAllQuestionsByCategory(String category) throws ClassNotFoundException, SQLException {
-      List<questionsP> questions = new ArrayList<questionsP>();
-      questionsP insert=new questionsP();
-      System.out.println(category);
-      System.out.println("vasanth");
+  public List<Questions> getAllQuestionsByCategory(String category) throws ClassNotFoundException, SQLException {
+      List<Questions> questions = new ArrayList<Questions>();
+      Questions insert=new Questions();
       String course = insert.getCourse();
       String option=insert.getOptionA();
 	Connection con=tableConnection.getConnection();
@@ -198,7 +200,7 @@ public class trainingImpl implements trainingDAO {
     p.setString(1, category);
     ResultSet re = p.executeQuery();
     while (re.next()) {
-        questionsP question = new questionsP();
+        Questions question = new Questions();
         question.setId(re.getString("id"));
         question.setQuestion(re.getString("questions"));
         question.setOptionA(re.getString("option_1"));
@@ -211,8 +213,7 @@ public class trainingImpl implements trainingDAO {
     }
     return questions;
   }
-  public static  void delete(int id) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+  public  void delete(int id) throws ClassNotFoundException, SQLException {
 
 		Connection con = tableConnection.getConnection();
 		String query = "DELETE FROM question WHERE id=?";
@@ -220,19 +221,18 @@ public class trainingImpl implements trainingDAO {
 		p.setInt(1, id);
 		p.executeUpdate();
 }
-  public static  void insertVideo(videoP video) throws ClassNotFoundException, SQLException{
+  public static  void insertVideo(VideoInsert video) throws ClassNotFoundException, SQLException{
 	  Connection con = tableConnection.getConnection();
 	  String inserting = "INSERT INTO Videos (VideoTitle, VideoLink, Category) VALUES (?, ?, ?)";
 	  PreparedStatement p = con.prepareStatement(inserting);
 	  p.setString(1, video.getTitle());
       p.setString(2, video.getLink());
       p.setString(3, video.getCategory());
-      System.out.println(video.getLink());
       p.executeUpdate();
   }
   
-  public List<videoP> getAllVideo(String cours ) throws ClassNotFoundException, SQLException {
-      List<videoP> videos = new ArrayList<videoP>();
+  public List<VideoInsert> getAllVideo(String cours ) throws ClassNotFoundException, SQLException {
+      List<VideoInsert> videos = new ArrayList<VideoInsert>();
       Connection con = tableConnection.getConnection();
       
       String getvideo = "SELECT * FROM Videos WHERE category=?";
@@ -240,25 +240,17 @@ public class trainingImpl implements trainingDAO {
       p.setString(1, cours);
       ResultSet re = p.executeQuery();
       while (re.next()) {
-          // Retrieve data from the result set
-    	  videoP get=new videoP();
+    	  VideoInsert get=new VideoInsert();
           get.setId(re.getString("VideoID")); 
           get.setTitle(re.getString("VideoTitle"));          
           get.setLink(re.getString("VideoLink"));
-          System.out.println( get.getId());
-          System.out.println(get.getTitle());
-          System.out.println(get.getLink());
           videos.add(get);
 
 }
       return videos;
 }
   public Map<String, String> getCorrectAnswersFromDatabase() throws ClassNotFoundException, SQLException {
-      // Replace this with your logic to fetch correct answers from the database
-      // Example:
-      // Map<String, String> correctAnswersMap = yourDatabaseService.getCorrectAnswers();
-      // return correctAnswersMap;
-	  Map<String, String> answersMap = new HashMap<>();
+      	  Map<String, String> answersMap = new HashMap<>();
 	  Connection con = tableConnection.getConnection();
 	  String query = "SELECT id,correct_answer from question";
 	  PreparedStatement p = con.prepareStatement(query);
@@ -273,6 +265,72 @@ public class trainingImpl implements trainingDAO {
       return answersMap;
       
 }
+  public  void insertResult(Result result) throws ClassNotFoundException, SQLException{
+	  Connection con = tableConnection.getConnection();
+	  String insert = "INSERT INTO result_list (learner_id, learner_name, learner_course, learner_score, learner_percentage) " +
+              "VALUES (?, ?, ?, ?, ?)";
+      PreparedStatement p = con.prepareStatement(insert);
+      p.setInt(1, result.getLearnerid());
+      p.setString(2, result.getLearnername());
+      p.setString(3, result.getCousename());
+      p.setLong(4, result.getCorrectanswer());
+      p.setDouble(5, result.getPercentage());
+      p.executeUpdate();
+
+	  }
+
+public List<Result> getAllResults() throws ClassNotFoundException, SQLException {
+    List<Result> results = new ArrayList<>();
+    Connection con = tableConnection.getConnection();
+    String query = "SELECT learner_id, learner_name, learner_course, learner_score, learner_percentage FROM result_list";
+    PreparedStatement p = con.prepareStatement(query);
+    ResultSet re = p.executeQuery();
+    while (re.next()) {
+        Result resultop = new Result();
+        resultop.setLearnerid(re.getInt("learner_id"));
+        resultop.setLearnername(re.getString("learner_name"));
+        resultop.setCousename(re.getString("learner_course"));
+        resultop.setCorrectanswer(re.getInt("learner_score"));
+        resultop.setPercentage( re.getDouble("learner_percentage"));
+        results.add(resultop);
+    }
+    return results;
+
+    
+
 }
+public void insertComments(Result result, String comment) throws ClassNotFoundException, SQLException
+{   
+	Connection con = tableConnection.getConnection();
+	  String insert = "INSERT INTO comments (learner_id, learner_name, learner_course, learner_comments) " +
+            "VALUES (?, ?, ?, ?)";
+    PreparedStatement p = con.prepareStatement(insert);
+    p.setInt(1, result.getLearnerid());
+    p.setString(2, result.getLearnername());
+    p.setString(3, result.getCousename());
+    p.setString(4, comment);
+    p.executeUpdate();
+
+	  }
 	
 
+public List<Result> getAllComments() throws ClassNotFoundException, SQLException {
+    List<Result> results = new ArrayList<>();
+    Connection con = tableConnection.getConnection();
+    String query = "SELECT learner_id, learner_name, learner_course, learner_comments From comments";
+    PreparedStatement p = con.prepareStatement(query);
+    ResultSet re = p.executeQuery();
+    while (re.next()) {
+        Result resultop = new Result();
+        resultop.setLearnerid(re.getInt("learner_id"));
+        resultop.setLearnername(re.getString("learner_name"));
+        resultop.setCousename(re.getString("learner_course"));
+        resultop.setComments(re.getString("learner_comments"));
+        results.add(resultop);
+    }
+    return results;
+
+    
+
+}
+}

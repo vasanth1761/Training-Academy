@@ -35,13 +35,13 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    text-decoration: none; /* Remove underline from anchor */
-    display: inline-block; /* Ensure buttons are displayed inline */
-    margin: 0 10px; /* Add spacing between buttons */
+    text-decoration: none; 
+    display: inline-block; 
+    margin: 0 10px; 
 }
 
 .ok-button:hover, .no-button:hover {
-    background-color: #0056b3; /* Darken color on hover */
+    background-color: #0056b3; 
 }
 
 </style>

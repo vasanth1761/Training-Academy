@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.trainingTableP;
+import com.academy.model.TrainingTable;
 
 /**
  * Servlet implementation class training
@@ -19,14 +19,14 @@ import com.academy.model.trainingTableP;
 @WebServlet("/training")
 public class training extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	trainingTableP table = new trainingTableP();
+	TrainingTable table = new TrainingTable();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public training() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -44,7 +44,6 @@ public class training extends HttpServlet {
 		table.setPhone(phonenumber);
 		table.setPassword(password);
 		String action = request.getParameter("action");
-		System.out.println(action);
 		switch (action) {
 
 		case "register": {
@@ -54,7 +53,6 @@ public class training extends HttpServlet {
 					response.sendRedirect("landingpage.jsp");
 				} else {
 					request.setAttribute("errorMessage", "Account already there So please Login");
-//					response.sendRedirect("landingpage.jsp");
 					request.getRequestDispatcher("landingpage.jsp").forward(request,response);
 				}
 
@@ -71,12 +69,9 @@ public class training extends HttpServlet {
 			trainingImpl obj = new trainingImpl();
 			try {
 				if (obj.login(table)) {
-					trainingTableP id = obj.getid(table);
-					System.out.println(id);
+					TrainingTable id = obj.getid(table);
 					HttpSession session = request.getSession();
 					session.setAttribute("userid", id);
-//					response.sendRedirect("welcome.jsp");
-//					trainingTableP check=obj.checkAdmin(table);
 					String email1=table.getEmail();
 					if(email1.endsWith("@coursehub.com"))
 					{
@@ -84,7 +79,7 @@ public class training extends HttpServlet {
 					}
 					else
 					{
-						response.sendRedirect("course.jsp");
+						response.sendRedirect("categories.jsp");
 					}
 //					
 				} else {
@@ -95,37 +90,26 @@ public class training extends HttpServlet {
 
 //				
 			catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 
 		}
 		}
-        
-//		try {
-//			obj.insert(table);
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		obj.register(obj);
-
 	}
+        
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

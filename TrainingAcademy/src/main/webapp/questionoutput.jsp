@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.academy.model.questionsP" %>
+<%@ page import="com.academy.model.Questions" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Arrays" %>
+<!DOCTYPE>
 <html>
 <head>
     <title>Questions</title>
@@ -29,10 +30,10 @@
         }
         .submit-btn {
             display: block;
-            width: 150px; /* Reduced button width */
+            width: 150px; 
             padding: 10px 0;
-            margin: 20px auto 0; /* Centered the button */
-            background-color: #0056b3; /* Coursera blue */
+            margin: 20px auto 0; 
+            background-color: #0056b3; 
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -41,24 +42,16 @@
         }
     </style>
 </head>
-<script>
-        function confirmRedirect() {
-            var confirmation = confirm("<%= (String)request.getAttribute("confirmMessage") %>");
-            if (confirmation) {
-                window.location.href = "questionoutput.jsp";
-            } else {
-                // Handle if user cancels the confirmation
-                window.location.href = "someOtherPage.jsp"; // Redirect to another page or do nothing
-            }
-        }
-    </script>
+
 <body>
  <center><h1>Take Quiz</h1></center>
     <div class="container">
         <form action="CheckResult" method="post">
-            <% List<questionsP> questions = (List<questionsP>) request.getAttribute("testop");
-               int i=1;
-               for(questionsP obj:questions) { %>
+            <%
+            List<Questions> questions = (List<Questions>) request.getAttribute("testop");
+                                       int i=1;
+                                       for(Questions obj:questions) {
+            %>
             <div class="question">
                 
                 <p><strong><%=i++ %></strong> .<%= obj.getQuestion() %></p>

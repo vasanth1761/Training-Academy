@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.academy.model.trainingTableP" %>
+<%@page import="com.academy.model.TrainingTable" %>
+<!DOCTYPE>
 <html>
 <head>
     <title>Result</title>
@@ -36,9 +37,17 @@
         }
     </style>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+            const errorMessage = '<%= request.getAttribute("errorMessage") %>';
+            if (errorMessage && errorMessage !== 'null') {
+                alert(errorMessage);
+            }
+        });
+ </script>  
 <body>
 
-    <h2>Result</h2>
+    <center><h2><strong>Result</h2></strong></center>
     <table border="1">
         <tr>
             <th>Name</th>

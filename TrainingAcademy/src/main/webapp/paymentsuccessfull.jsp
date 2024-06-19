@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
 }
 
 .content-box {
@@ -42,7 +42,7 @@
 }
 
 .success-icon {
-    color: #28a745; /* Green color for success */
+    color: #28a745; 
 }
 
 .proceed-button {
@@ -57,10 +57,18 @@
 }
 
 .proceed-button:hover {
-    background-color: #0056b3; /* Darken color on hover */
+    background-color: #0056b3; 
 }
 
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+            const errorMessage = '<%= request.getAttribute("errorMessage") %>';
+            if (errorMessage && errorMessage !== 'null') {
+                alert(errorMessage);
+            }
+        });
+ </script>  
 <body>
 <form action="videoCategory" method="post">
 <div class="container">

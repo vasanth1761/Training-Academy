@@ -1,6 +1,6 @@
 package com.academy.model;
 
-public class trainingTableP {
+public class TrainingTable {
 	int id;
 	String name;
 	String email;
@@ -36,7 +36,7 @@ public class trainingTableP {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public trainingTableP(int id, String name, String email, String phone, String password) {
+	public TrainingTable(int id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -44,8 +44,8 @@ public class trainingTableP {
 		this.phone = phone;
 		this.password = password;
 	}
-	public trainingTableP() {
-		// TODO Auto-generated constructor stub
+	public TrainingTable() {
+
 	}
 	
 

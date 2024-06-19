@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.videoP;
+import com.academy.model.VideoInsert;
+
 
 /**
  * Servlet implementation class Video
@@ -26,23 +27,24 @@ public class Video extends HttpServlet {
      */
     public Video() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		videoP video=new videoP();
+
+		VideoInsert video=new VideoInsert();
 		trainingImpl invideo=new trainingImpl();
 		doGet(request, response);
         String title = request.getParameter("title");
@@ -51,14 +53,16 @@ public class Video extends HttpServlet {
         video.setTitle(title);
         video.setLink(link);
         video.setCategory(category);
+        String course=video.getCategory();
+        
         try {
 			invideo.insertVideo(video);
-//			List<videoP>videosop=invideo.getAllVideo();
-//			request.setAttribute("opvideo",videosop);
-//			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
-//	            dispatcher.forward(request, response);
+			List<VideoInsert>videosop=invideo.getAllVideo(course);
+			request.setAttribute("opvideo",videosop);
+			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
+	            dispatcher.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
         
@@ -66,5 +70,6 @@ public class Video extends HttpServlet {
 
 	}
 
+	
+
 }
-;

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.questionsP;
+import com.academy.model.Questions;
 
 /**
  * Servlet implementation class Crud
@@ -26,25 +26,25 @@ public class Crud extends HttpServlet {
      */
     public Crud() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		questionsP insert=new questionsP();
+		Questions insert = new Questions();
 		String action=request.getParameter("action");
-		System.out.println(action);
         if(action!=null)
+        {
         switch(action)
         {
         case"Delete":
         {
         	int deleteid=Integer.parseInt(request.getParameter("delete"));
-        	System.out.println(deleteid);
         	trainingImpl userdelete=new trainingImpl();
         
         	try {
@@ -52,31 +52,33 @@ public class Crud extends HttpServlet {
 				
 				
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
         	try {
-        		List<questionsP> questions=userdelete.getAllQuestionsByCategory(action);
+        		List<Questions> questions=userdelete.getAllQuestionsByCategory(action);
         		request.setAttribute("questions",questions);
+        		 RequestDispatcher req=request.getRequestDispatcher("javaquestions.jsp");
+         		req.forward(request, response);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//        	
-        	RequestDispatcher req=request.getRequestDispatcher("javaquestions.jsp");
-    		req.forward(request, response);
+       	    
 
         
 
 	}
+       
         }
+	}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

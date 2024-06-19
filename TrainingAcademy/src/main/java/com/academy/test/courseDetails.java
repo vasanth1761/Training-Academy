@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.courseP;
-import com.academy.model.trainingTableP;
+import com.academy.model.Course;
+import com.academy.model.TrainingTable;
 
 /**
  * Servlet implementation class courseDetails
@@ -27,20 +27,18 @@ public class courseDetails extends HttpServlet {
      */
     public courseDetails() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String action = request.getParameter("action");
-		System.out.println(action);
-		courseP learnerdetail=new courseP();
-		switch (action) {
+		Course learnerdetail=new Course();
+		switch(action) {
 		
 		case "java":
 		{
@@ -55,18 +53,16 @@ public class courseDetails extends HttpServlet {
 		    String course=learnerdetail.getCourseName();
 		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
-		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
-		    session.setAttribute("jack",course);
-		    String cours=(String) session.getAttribute("jack");
+		    TrainingTable obj1 =(TrainingTable) session.getAttribute("userid");
+		    session.setAttribute("course",course);
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
-		    System.out.println(iid);
-		    System.out.println(name);
+		    
 		   
 		    try {
 				obj.learnerdetails(learnerdetail,iid,name);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		    break;
@@ -86,18 +82,15 @@ public class courseDetails extends HttpServlet {
 		    String course=learnerdetail.getCourseName();
 		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
-		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
-		    session.setAttribute("jack",course);
-		    String cours=(String) session.getAttribute("jack");
+		    TrainingTable obj1 =(TrainingTable) session.getAttribute("userid");
+		    session.setAttribute("course",course);
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
-		    System.out.println(iid);
-		    System.out.println(name);
-		   
+		    
 		    try {
 				obj.learnerdetails(learnerdetail,iid,name);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		    break;
@@ -117,18 +110,16 @@ public class courseDetails extends HttpServlet {
 		    String course=learnerdetail.getCourseName();
 		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
-		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
-		    session.setAttribute("jack",course);
-		    String cours=(String) session.getAttribute("jack");
+		    TrainingTable obj1 =(TrainingTable) session.getAttribute("userid");
+		    session.setAttribute("course",course);
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
-		    System.out.println(iid);
-		    System.out.println(name);
+		   
 		   
 		    try {
 				obj.learnerdetails(learnerdetail,iid,name);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		    break;
@@ -147,23 +138,22 @@ public class courseDetails extends HttpServlet {
 		    String course=learnerdetail.getCourseName();
 		    response.sendRedirect("readytopay.jsp");
 		    HttpSession session = request.getSession(false);
-		    trainingTableP obj1 =(trainingTableP) session.getAttribute("userid");
-		    session.setAttribute("jack",course);
-		    String cours=(String) session.getAttribute("jack");
+		    TrainingTable obj1 =(TrainingTable) session.getAttribute("userid");
+		    session.setAttribute("course",course);
 		    int iid= obj1.getId();
 		    String name=obj1.getName();
-		    System.out.println(iid);
-		    System.out.println(name);
+		    
 		   
 		    try {
 				obj.learnerdetails(learnerdetail,iid,name);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		    break;
 		}
-		
+		default:
+			response.sendRedirect("readytopay.jsp");
 		
 		}
 		
@@ -173,8 +163,9 @@ public class courseDetails extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		doGet(request, response);
 	}
 

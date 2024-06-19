@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
  <input type="text" name="name" placeholder="Enter the name" pattern="[A-Za-z]{5,}" required><br><br>
  <input type="email" name="email" placeholder="Enter the Email"><br><br>
  <input type="text" name="number" placeholder="Mobile" pattern="[0-9]{10}"required><br><br>
- <input type="password" name="password" placeholder="Password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#&]).{5,}"><br><br>
+ <input type="password" name="password" placeholder="Password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#&]).{5,}"required><br><br>
  <input type="hidden" name="action" value="register"> 
  <button type="submit">Submit</button>
  <p>Already have an account?</p>
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
  </center>
 </form>
 </div>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.6/sweetalert2.min.js"></script>
 <script>
 $(document).ready(function(){

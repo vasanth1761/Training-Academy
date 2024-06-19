@@ -141,7 +141,7 @@
             margin-left:25px ;
         }
         .content button {
-            padding: 14px 44px; /* Increased padding for larger size */
+            padding: 14px 44px; 
             background-color: #2A73CC;
             color: #fff;
             border: none;
@@ -149,11 +149,11 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
-            align-self: center; /* Center the button */
+            align-self: center; 
             margin-left: 250px;
         }
         .content button:hover {
-            color: black; /* Change text color to black on hover */
+            color: black; 
         }
         
     </style>
@@ -172,19 +172,19 @@
                 <a href="#">Marketing</a>
             </div>
         </div>
-        <div class="search-bar">
+
             <input type="text" placeholder="Search...">
             <button>Search</button>
-        </div>
+        </div> -->
         <ul>
-            <li><a href="#"></a></li>
+            
             <li><a href="#">About us</a></li>
             <li><a href="landingpage.jsp">Login</a></li>
             <li><a href="Register.jsp">Sign Up</a></li>
         </ul>
     </nav>
 
-    <!-- Second Navigation Bar -->
+    
     <div class="second-nav">
         <ul>
             <li><a href="#">Development</a></li>

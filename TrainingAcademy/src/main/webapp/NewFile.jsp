@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  <%@page import="com.academy.model.TrainingTable"%>
-!DOCTYPE html>
+    <%@page import="com.academy.model.TrainingTable"%>
+<!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,15 +85,15 @@
     .navbar .profile-section {
         display: flex;
         align-items: center;
-        cursor: pointer; 
-        position: relative; 
+        cursor: pointer; /* Add cursor pointer */
+        position: relative; /* Add relative positioning */
     }
 
     .navbar img {
         width: 30px;
         height: 30px;
         margin-right: 10px;
-        border-radius: 50%; 
+        border-radius: 50%; /* Round the profile image */
     }
 
     .dropdown-content {
@@ -174,7 +173,7 @@
     <form action="courseDetails" method="get">
         <div class="box">
             <div class="card">
-                <img alt="Finance Course" src="image/Angular.jpg">
+                <img alt="Finance Course" src="image/angular.jpg">
                 <input type="hidden" name="action" value="angular">
                 <button type="submit">Enroll</button>
             </div>
@@ -184,4 +183,4 @@
 
 </body>
 </html>
-  
+    

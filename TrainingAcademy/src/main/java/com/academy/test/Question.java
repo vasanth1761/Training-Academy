@@ -1,7 +1,7 @@
 package com.academy.test;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,41 +14,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.academy.dao.trainingImpl;
-import com.academy.model.questionsP;
+import com.academy.model.Questions;
 
 
 /**
  * Servlet implementation class question
  */
 @WebServlet("/question")
-public class question extends HttpServlet {
+public class Question extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ArrayList<questionsP>list= new ArrayList<questionsP>();   
+	ArrayList<Questions>list= new ArrayList<Questions>();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public question() {
+    public Question() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         trainingImpl inserttable = new trainingImpl();
-        questionsP insert = new questionsP();
+        Questions insert = new Questions();
         
         String question = request.getParameter("question");
-        System.out.println(question);
         String option1 = request.getParameter("option1");
         String option2 = request.getParameter("option2");
         String option3 = request.getParameter("option3");
         String option4 = request.getParameter("option4");
         String correctoption = request.getParameter("correctAnswer");
-        System.out.println(correctoption);
         String course = request.getParameter("course");
-        System.out.println(course);
+   
         
         insert.setQuestion(question);
         insert.setOptionA(option1);
@@ -61,24 +60,25 @@ public class question extends HttpServlet {
         try {
             inserttable.insertQuestion(insert);
             String category = insert.getCourse();
-            System.out.println(category);
-            List<questionsP> questions = inserttable.getAllQuestionsByCategory(category);
+            List<Questions> questions = inserttable.getAllQuestionsByCategory(category);
             request.setAttribute("questions", questions);
             RequestDispatcher dispatcher = request.getRequestDispatcher("javaquestions.jsp");
             dispatcher.forward(request, response);
-          //  response.sendRedirect("javaquestions.jsp");
+        
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            // Handle the exception
+           
         }
     }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 
+	
 }

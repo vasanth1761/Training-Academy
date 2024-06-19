@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE>    
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -43,19 +44,19 @@
   }
   
   input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: blue; 
     color: white;
-    padding: 14px 20px;
+    padding: 8px 12px; 
     margin-top: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px; 
   }
   
   input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0066cc; 
   }
 </style>
 </head>
@@ -71,18 +72,16 @@
   </select>
   
   <label for="card_number">Card Number:</label>
-  <input type="text" id="card_number" name="card_number">
+  <input type="text" id="card_number" name="card_number" pattern="[0-9]{10}" required>
   
   <label for="expiry_date">Expiry Date:</label>
-  <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+  <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
   
   <label for="cvv">CVV:</label>
-  <input type="text" id="cvv" name="cvv">
+  <input type="text" id="cvv" name="cvv" pattern="[0-9]{3}">
   <input type="hidden" name="action" value="paid">
   <input type="submit" value="Pay">
 </form>
 
 </body>
-
 </html>
-    

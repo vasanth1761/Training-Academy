@@ -41,7 +41,7 @@
             box-sizing: border-box;
         }
         .insert-btn {
-            background-color: #0056b3; /* Coursera blue */
+            background-color: #0056b3; 
             color: white;
             padding: 10px 20px;
             border: none;
@@ -49,10 +49,10 @@
             cursor: pointer;
             font-size: 16px;
             text-transform: uppercase;
-            transition: background-color 0.3s ease; /* Smooth transition effect */
+            transition: background-color 0.3s ease; 
         }
         .insert-btn:hover {
-            background-color: #003366; /* Darker shade of Coursera blue on hover */
+            background-color: #003366; 
         }
     </style>
 </head>
@@ -86,7 +86,7 @@
             </div>
             <div class="form-group">
                 <label for="correctAnswer">Correct Answer:</label>
-                <!-- <select id="correctAnswer" name="correctAnswer" required>
+
                     <option value="">Select correct answer</option>
                     <option value="A">Option 1</option>
                     <option value="B">Option 2</option>

@@ -1,21 +1,21 @@
 package com.academy.model;
 
-public class questionsP {
+public class Questions {
 
-		public String course;
-	    public String question;
-	    public String optionA;
-	    public String optionB;
-	    public String optionC;
-	    public String optionD;
-	    public String correctAnswer;
-	    public String id;
+	     String course;
+	     String question;
+	     String optionA;
+	     String optionB;
+	     String optionC;
+	     String optionD;
+	     String correctAnswer;
+	     String id;
 	    
 
 	    
 
 
-		public questionsP(String course, String question, String optionA, String optionB, String optionC,
+		public Questions(String course, String question, String optionA, String optionB, String optionC,
 				String optionD, String correctAnswer, String id) {
 			super();
 			this.course = course;
@@ -111,8 +111,8 @@ public class questionsP {
 		
 
 
-		public questionsP() {
-			// TODO Auto-generated constructor stub
+		public Questions() {
+
 		}
 
 

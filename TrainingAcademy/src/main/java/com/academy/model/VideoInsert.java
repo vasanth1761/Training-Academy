@@ -1,6 +1,6 @@
 package com.academy.model;
 
-public class videoP {
+public class VideoInsert {
 	    String id;
 	    String title;
 	    String link;
@@ -26,15 +26,15 @@ public class videoP {
 		public String getCategory() {
 			return category;
 		}
-		public videoP(String id, String title, String link, String category) {
+		public VideoInsert(String id, String title, String link, String category) {
 			super();
 			this.id = id;
 			this.title = title;
 			this.link = link;
 			this.category = category;
 		}
-		public videoP() {
-			// TODO Auto-generated constructor stub
+		public VideoInsert() {
+
 		}
 		public void setCategory(String category) {
 			this.category = category;

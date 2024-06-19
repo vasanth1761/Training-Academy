@@ -1,10 +1,10 @@
 package com.academy.model;
 
-public class courseP {
+public class Course {
  int courseid;
- String CourseName;
+ String courseName;
  String paymentType;
- String AccoutNumber;
+ String accoutNumber;
  String date;
  int amount;
 public int getCourseid() {
@@ -14,10 +14,10 @@ public void setCourseid(int courseid) {
 	this.courseid = courseid;
 }
 public String getCourseName() {
-	return CourseName;
+	return courseName;
 }
 public void setCourseName(String courseName) {
-	CourseName = courseName;
+	courseName = courseName;
 }
 public String getPaymentType() {
 	return paymentType;
@@ -26,10 +26,10 @@ public void setPaymentType(String paymentType) {
 	this.paymentType = paymentType;
 }
 public String getAccoutNumber() {
-	return AccoutNumber;
+	return accoutNumber;
 }
 public void setAccoutNumber(String accountnumber) {
-	AccoutNumber = accountnumber;
+	accoutNumber = accountnumber;
 }
 public String getDate() {
 	return date;
@@ -43,16 +43,15 @@ public int getAmount() {
 public void setAmount(int amount) {
 	this.amount = amount;
 }
-public courseP(int courseid, String courseName, String paymentType, String accoutNumber, String date, int amount) {
+public Course(int courseid, String courseName, String paymentType, String accoutNumber, String date, int amount) {
 	super();
 	this.courseid = courseid;
-	CourseName = courseName;
+	courseName = courseName;
 	this.paymentType = paymentType;
-	AccoutNumber = accoutNumber;
+	accoutNumber = accoutNumber;
 	this.date = date;
 	this.amount = amount;
 }
-public courseP() {
-	// TODO Auto-generated constructor stub
+public Course() {
 }
 }
