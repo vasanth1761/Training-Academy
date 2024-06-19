@@ -2,14 +2,14 @@ package com.academy.model;
 
 public class Questions {
 
-	     String course;
-	     String question;
-	     String optionA;
-	     String optionB;
-	     String optionC;
-	     String optionD;
-	     String correctAnswer;
-	     String id;
+		public String course;
+	    public String question;
+	    public String optionA;
+	    public String optionB;
+	    public String optionC;
+	    public String optionD;
+	    public String correctAnswer;
+	    public String id;
 	    
 
 	    
@@ -112,7 +112,7 @@ public class Questions {
 
 
 		public Questions() {
-
+			// TODO Auto-generated constructor stub
 		}
 
 

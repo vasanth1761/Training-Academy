@@ -66,25 +66,27 @@
         }
 
         .content {
-            margin-left: 250px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 250px; 
             padding: 20px;
         }
 
-        .content h2 {
-            color: #333;
-        }
-
         .card {
+            flex: 1; 
             background-color: #f2f2f2; 
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 15px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            width: 200px; 
-            height:100px;
+            width: 10px; 
+            height: 100px; 
             text-align: center;
+            margin-left: 10px; 
+            margin-right: 10px; 
         }
+        
 
         .card:hover {
             transform: scale(1.02);
@@ -117,8 +119,9 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="insertquestion.jsp">Add Question</a></li>
         <li><a href="insertvideo.jsp">Add Video</a></li>
-        <li><a href="Comment.jsp">List of Learners</a></li>
-        <li><a href="#payment-details">Payment Details</a></li>
+        <li><a href="Comment.jsp">View videos</a></li>
+        <li><a href="ViewQuestions">View questions</a></li>
+        
     </ul>
 </div>
 
@@ -127,9 +130,16 @@
         <div class="card-title">
             Learners Result
         </div>
-        <div class="card-description">
     
+    
+        
+    </div>
+    <div class="card" onclick="location.href='Comment.jsp';">
+        <div class="card-title">
+            Reviews
         </div>
+        
+        
     </div>
 </div>
 

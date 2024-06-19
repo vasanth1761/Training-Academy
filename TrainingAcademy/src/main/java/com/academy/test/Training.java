@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.TrainingTable;
 
 /**
  * Servlet implementation class training
  */
 @WebServlet("/training")
-public class training extends HttpServlet {
+public class Training extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	TrainingTable table = new TrainingTable();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public training() {
+	public Training() {
 		super();
 
 	}
@@ -47,7 +47,7 @@ public class training extends HttpServlet {
 		switch (action) {
 
 		case "register": {
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			try {
 				if (obj.register(table)) {
 					response.sendRedirect("landingpage.jsp");
@@ -66,7 +66,7 @@ public class training extends HttpServlet {
 		case "login":
 
 		{
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			try {
 				if (obj.login(table)) {
 					TrainingTable id = obj.getid(table);

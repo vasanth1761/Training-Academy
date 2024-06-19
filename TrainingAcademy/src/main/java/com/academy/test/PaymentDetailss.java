@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Course;
 import com.academy.model.TrainingTable;
 
@@ -18,13 +18,13 @@ import com.academy.model.TrainingTable;
  * Servlet implementation class paymentDetailss
  */
 @WebServlet("/paymentDetailss")
-public class paymentDetailss extends HttpServlet {
+public class PaymentDetailss extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	trainingImpl pay=new trainingImpl(); 
+	TrainingImpl pay=new TrainingImpl(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public paymentDetailss() {
+    public PaymentDetailss() {
         super();
     }
 
@@ -51,8 +51,7 @@ public class paymentDetailss extends HttpServlet {
 			response.sendRedirect("paymentsuccessfull.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		}
-	    break;
+		}	
 		}
 		}
 
@@ -60,6 +59,7 @@ public class paymentDetailss extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

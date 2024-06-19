@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Result;
+
 import com.academy.model.TrainingTable;
 
 
@@ -41,7 +42,6 @@ public class CheckResult extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);
@@ -61,7 +61,7 @@ public class CheckResult extends HttpServlet {
         }
 
         
-            trainingImpl checkanswer=new  trainingImpl();
+            TrainingImpl checkanswer=new  TrainingImpl();
             Map<String, String> correctAnswersMap = null;
 			try {
 				correctAnswersMap = checkanswer. getCorrectAnswersFromDatabase();

@@ -87,21 +87,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
  <input type="email"name="email"placeholder="Enter the Email"><br><br>
  <input type="password" name="password" placeholder="Password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#&]).{5,}"><br><br>
+
  <input type="hidden"  name="action" value="login"> 
  <button type="submit" >login</button>
 
- <p> you dont have an account?<p>
- <a href="Register.jsp">Clickhere</a><br>
- <p>or</p>
- </center>  -->
+ 
 
- <form action="Register.jsp">
- <button type="submit">click</button> 
- </form>
- -->
  <center>
       <p>Don't have an account? <a href="Register.jsp">Click here</a></p>
-
+      <!-- <p>or</p>
       <a href="https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=email%20profile&approval_prompt=auto">
         <img src="google.jpg" alt="Sign in with Google" class="google-btn">
       </a> -->

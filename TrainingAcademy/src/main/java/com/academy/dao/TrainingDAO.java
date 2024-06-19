@@ -2,7 +2,7 @@ package com.academy.dao;
 
 import java.sql.SQLException;
 
-public interface trainingDAO {
+public interface TrainingDAO {
 	boolean insert() throws ClassNotFoundException, SQLException;
 
 }

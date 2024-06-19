@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="com.academy.model.Result" %>
-<%@ page import="com.academy.dao.trainingImpl" %>
+<%@ page import="com.academy.dao.TrainingImpl" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -58,8 +58,10 @@
         </thead>
         <tbody>
             <%-- Replace this part with your Java logic to fetch results from the backend --%>
-            <% trainingImpl user = new trainingImpl();
-               List<Result> obj = user.getAllResults();
+            <%
+            
+             TrainingImpl user = new TrainingImpl();
+                           List<Result> obj = user.getAllResults();
             %>
             
             <% for (Result result : obj) { %>

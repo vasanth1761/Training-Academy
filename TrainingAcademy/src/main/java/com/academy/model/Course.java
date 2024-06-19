@@ -2,9 +2,9 @@ package com.academy.model;
 
 public class Course {
  int courseid;
- String courseName;
+ String CourseName;
  String paymentType;
- String accoutNumber;
+ String AccoutNumber;
  String date;
  int amount;
 public int getCourseid() {
@@ -14,10 +14,10 @@ public void setCourseid(int courseid) {
 	this.courseid = courseid;
 }
 public String getCourseName() {
-	return courseName;
+	return CourseName;
 }
 public void setCourseName(String courseName) {
-	courseName = courseName;
+	CourseName = courseName;
 }
 public String getPaymentType() {
 	return paymentType;
@@ -26,10 +26,10 @@ public void setPaymentType(String paymentType) {
 	this.paymentType = paymentType;
 }
 public String getAccoutNumber() {
-	return accoutNumber;
+	return AccoutNumber;
 }
 public void setAccoutNumber(String accountnumber) {
-	accoutNumber = accountnumber;
+	AccoutNumber = accountnumber;
 }
 public String getDate() {
 	return date;
@@ -46,9 +46,9 @@ public void setAmount(int amount) {
 public Course(int courseid, String courseName, String paymentType, String accoutNumber, String date, int amount) {
 	super();
 	this.courseid = courseid;
-	courseName = courseName;
+	CourseName = courseName;
 	this.paymentType = paymentType;
-	accoutNumber = accoutNumber;
+	AccoutNumber = accoutNumber;
 	this.date = date;
 	this.amount = amount;
 }

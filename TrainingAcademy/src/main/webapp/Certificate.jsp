@@ -16,6 +16,7 @@
         body {
             color: black;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-family: Georgia, serif;
@@ -34,6 +35,7 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            position: relative; 
         }
         .logo {
             color:blue;
@@ -80,66 +82,52 @@
         button:hover {
             background-color: #0056b3;
         }
+        .extra-course-link {
+            text-decoration: underline;
+            color: #007bff;
+        }
+        .adjust {
+            bottom: 20px; 
+            font-size: 16px;
+            color: #666;
+        }
+
+        
     </style>
 </head>
-<%String course=(String)session.getAttribute("course");
-TrainingTable obj1 = (TrainingTable) session.getAttribute("userid");
-
-%>
 <body>
-    <div class="container">
-        <div class="logo">
-            <strong>SYSTECH</strong>
-        </div>
+  <%String course=(String)session.getAttribute("course");
+TrainingTable obj1 = (TrainingTable) session.getAttribute("userid");
+%>
+    <a onclick="window.print()">
+        <div class="container">
+            <div class="logo">
+                <strong>SYSTECH</strong>
+            </div>
 
-        <div class="marquee">
-            Certificate of Completion
-        </div>
+            <div class="marquee">
+                Certificate of Completion
+            </div>
 
-        <div class="assignment">
-            This certificate is presented to
-        </div>
+            <div class="assignment">
+                This certificate is presented to
+            </div>
 
-        <div class="person">
-            <%=obj1.getName() %>
-        </div>
+            <div class="person">
+               <%=obj1.getName() %> 
+            </div>
 
-        <div class="reason">
-            <%=course %> course Succesfully Completed <br/>
-            
+            <div class="reason">
+              <%=course %>  Course Successfully Completed 
+            </div>
+
+
         </div>
+    </a>
+
+    <div class="adjust">
+        <a href="thankyou.jsp" class="extra-course-link">Click here </a>to add an extra course
     </div>
-
-    <div class="button-container">
-        <div class="download-btn-container">
-            <button id="downloadBtn">Download Certificate</button>
-        </div>
-
-            <button id="nextBtn">Next</button>
-        </div> -->
-    </div>
-
-    <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-          
-            var htmlContent = document.documentElement.outerHTML;
-
-          
-            var blob = new Blob([htmlContent], { type: 'text/html' });
-
-         
-            var a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'certificate.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            alert('Next button clicked. Replace with your navigation logic.');
-        });
-    </script>
 </body>
 </html>
     

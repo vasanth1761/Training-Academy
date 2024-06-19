@@ -172,12 +172,10 @@
                 <a href="#">Marketing</a>
             </div>
         </div>
-
-            <input type="text" placeholder="Search...">
-            <button>Search</button>
-        </div> -->
+       
+       
         <ul>
-            
+
             <li><a href="#">About us</a></li>
             <li><a href="landingpage.jsp">Login</a></li>
             <li><a href="Register.jsp">Sign Up</a></li>

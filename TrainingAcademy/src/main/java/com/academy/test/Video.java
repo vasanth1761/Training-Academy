@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.VideoInsert;
 
 
@@ -45,7 +45,7 @@ public class Video extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		VideoInsert video=new VideoInsert();
-		trainingImpl invideo=new trainingImpl();
+		TrainingImpl invideo=new TrainingImpl();
 		doGet(request, response);
         String title = request.getParameter("title");
         String link = request.getParameter("link");

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Result;
 
 /**
@@ -35,7 +35,7 @@ public class Comments extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 
-		trainingImpl comments= new trainingImpl();
+		TrainingImpl comments= new TrainingImpl();
 		String comment=request.getParameter("comment");
 		try {
 			HttpSession session = request.getSession(false);

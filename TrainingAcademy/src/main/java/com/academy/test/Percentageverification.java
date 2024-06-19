@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Result;
-
-
+import com.academy.model.ResultTable;
+import com.academy.model.TrainingTable;
 
 /**
  * 
@@ -46,9 +46,12 @@ public class Percentageverification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		doGet(request, response);
 		String percentage = request.getParameter("percentage");
+		System.out.println("vasanth");
+		System.out.println(percentage);
+		System.out.println("vasanth");
         double percentagee = Double.parseDouble(percentage);
         if (percentagee >= 80) {
-        	trainingImpl result=new trainingImpl();
+        	TrainingImpl result=new TrainingImpl();
         	HttpSession session = request.getSession(false);
 		    String course=(String)session.getAttribute("course");
 		    Result obj1 =(Result) session.getAttribute("result");

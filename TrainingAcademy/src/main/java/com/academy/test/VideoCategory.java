@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.TrainingTable;
 import com.academy.model.VideoInsert;
 
@@ -20,13 +20,13 @@ import com.academy.model.VideoInsert;
  * Servlet implementation class videoCategory
  */
 @WebServlet("/videoCategory")
-public class videoCategory extends HttpServlet {
+public class VideoCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public videoCategory() {
+    public VideoCategory() {
         super();
     }
 
@@ -40,6 +40,7 @@ public class videoCategory extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +48,7 @@ public class videoCategory extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		String cours=(String) session.getAttribute("course");
-		trainingImpl videoop= new trainingImpl();
+		TrainingImpl videoop= new TrainingImpl();
 		switch(cours)
 		{
 		case"java":
@@ -75,7 +76,6 @@ public class videoCategory extends HttpServlet {
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("videooutput.jsp");
 	            dispatcher.forward(request, response);
-	            break;
 		}
 		case"css":
 		{   
@@ -101,9 +101,6 @@ public class videoCategory extends HttpServlet {
 	            dispatcher.forward(request, response);
 	            break;
 		}
-		default:
-			response.sendRedirect("readytopay.jsp");
-		
 	}
 
 	

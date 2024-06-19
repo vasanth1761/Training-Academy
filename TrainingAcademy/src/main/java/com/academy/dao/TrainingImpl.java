@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,13 +25,13 @@ import com.mysql.cj.protocol.Resultset;
 
 
 
-public class trainingImpl implements trainingDAO {
+
+public class TrainingImpl implements TrainingDAO {
 	
 
 	
 
 	public void insert(TrainingTable table) throws ClassNotFoundException, SQLException {
-
 		Connection con = tableConnection.getConnection();
 		String query = "insert into training_logindetails (user_name, user_email, user_phonenumber,user_password)values(?,?,?,?)";
 		PreparedStatement p = con.prepareStatement(query);
@@ -48,7 +47,6 @@ public class trainingImpl implements trainingDAO {
 	@Override
 	public boolean insert() throws ClassNotFoundException, SQLException {
 		return false;
-
 		
 	}
 
@@ -69,7 +67,8 @@ public class trainingImpl implements trainingDAO {
 			p.setString(3, table.getPhone());
 			p.setString(4, table.getPassword());
 			p.execute();
-		    return  true;
+			System.out.println("registered  successfull");
+			return true;
 		}  
 
 
@@ -108,6 +107,8 @@ public class trainingImpl implements trainingDAO {
 	   {
 		   int id=re.getInt("user_id");
 		   String name=re.getString("user_name");
+		   System.out.println(id);
+		   System.out.println(name);
 		   table.setId(id);
 		   table.setName(name);
 		   return table;
@@ -141,19 +142,15 @@ public class trainingImpl implements trainingDAO {
    {
 	   Connection con=tableConnection.getConnection();
 	   String date=learnerdetail.getDate();
+	   System.out.println(date);
 	   String query="insert into learner_details (learner_id,leaner_name,course_id,course_name,enroll_date)values(?,?,?,?,?)";
 	   PreparedStatement p = con.prepareStatement(query);
-	   try {
 	   p.setInt(1,iid);
        p.setString(2,name);
        p.setInt(3,learnerdetail.getCourseid());
        p.setString(4,learnerdetail.getCourseName());
        p.setString(5,learnerdetail.getDate());
        p.execute();
-	   }
-       finally {
- 		  p.close();
- 	  }
    }
 
   public void updatepayment(Course payment ,int id)throws ClassNotFoundException,SQLException
@@ -163,15 +160,11 @@ public class trainingImpl implements trainingDAO {
 	  String pay="paid";
 	  String query="UPDATE learner_details SET accountnumber=?,payment=? WHERE learner_id=?";
 	  PreparedStatement p = con.prepareStatement(query);
-	  try {
 	  p.setString(1,payment.getAccoutNumber());
 	  p.setString(2,pay);
 	  p.setInt(3, id);
 	  p.executeUpdate();
-	  }
-	  finally {
-		  p.close();
-	  }
+	  
 	  		
   }
   public void insertQuestion(Questions insert)throws ClassNotFoundException,SQLException
@@ -186,7 +179,7 @@ public class trainingImpl implements trainingDAO {
 	  p.setString(5, insert.getOptionD());
 	  p.setString(6, insert.getCorrectAnswer());
 	  p.setString(7,insert.getCourse());
-	 
+	  System.out.println(insert.getCourse());
 	  p.executeUpdate();
   }
   public List<Questions> getAllQuestionsByCategory(String category) throws ClassNotFoundException, SQLException {
@@ -214,6 +207,7 @@ public class trainingImpl implements trainingDAO {
     return questions;
   }
   public  void delete(int id) throws ClassNotFoundException, SQLException {
+
 
 		Connection con = tableConnection.getConnection();
 		String query = "DELETE FROM question WHERE id=?";
@@ -250,7 +244,8 @@ public class trainingImpl implements trainingDAO {
       return videos;
 }
   public Map<String, String> getCorrectAnswersFromDatabase() throws ClassNotFoundException, SQLException {
-      	  Map<String, String> answersMap = new HashMap<>();
+      
+	  Map<String, String> answersMap = new HashMap<>();
 	  Connection con = tableConnection.getConnection();
 	  String query = "SELECT id,correct_answer from question";
 	  PreparedStatement p = con.prepareStatement(query);
@@ -333,4 +328,50 @@ public List<Result> getAllComments() throws ClassNotFoundException, SQLException
     
 
 }
+public List<Questions> getAllQuestionsByCategory() throws ClassNotFoundException, SQLException {
+    List<Questions> questions = new ArrayList<Questions>();
+    Questions insert=new Questions();
+    String course = insert.getCourse();
+    String option=insert.getOptionA();
+	Connection con=tableConnection.getConnection();
+  String query = "SELECT * FROM question";
+  PreparedStatement p = con.prepareStatement(query);
+  ResultSet re = p.executeQuery();
+  while (re.next()) {
+      Questions question = new Questions();
+      question.setId(re.getString("id"));
+      question.setQuestion(re.getString("questions"));
+      question.setOptionA(re.getString("option_1"));
+      question.setOptionB(re.getString("option_2"));
+      question.setOptionC(re.getString("option_3"));
+      question.setOptionD(re.getString("option_4"));
+      question.setCorrectAnswer(re.getString("correct_answer"));
+      question.setCourse(re.getString("category"));
+      questions.add(question);
+      System.out.println(question.getId());
+  }
+  return questions;
+}
+public static List<Questions> search (String course)throws ClassNotFoundException, SQLException{
+	 
+	Connection con=tableConnection.getConnection();
+	List<Questions>val=new ArrayList<Questions>();
+	String query="select *from question where category like?";
+	PreparedStatement p=con.prepareStatement(query);
+	p.setString(1,course);
+    ResultSet re=p.executeQuery();
+	while(re.next())
+	{
+		   Questions userp=new Questions();
+			userp.setQuestion(re.getString("questions"));
+			userp.setOptionA(re.getString("option_1"));
+			userp.setOptionB(re.getString("option_2"));
+			userp.setOptionC(re.getString("option_3"));
+			userp.setOptionD(re.getString("option_4"));
+			userp.setCorrectAnswer(re.getString("correct_answer"));
+			userp.setCourse(re.getString("category"));
+			val.add(userp);
+		}
+	return val;
+	}
 }

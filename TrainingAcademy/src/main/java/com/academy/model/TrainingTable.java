@@ -45,7 +45,7 @@ public class TrainingTable {
 		this.password = password;
 	}
 	public TrainingTable() {
-
+		// TODO Auto-generated constructor stub
 	}
 	
 

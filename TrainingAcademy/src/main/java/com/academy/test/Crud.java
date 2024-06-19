@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Questions;
 
 /**
@@ -32,7 +32,6 @@ public class Crud extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -45,7 +44,7 @@ public class Crud extends HttpServlet {
         case"Delete":
         {
         	int deleteid=Integer.parseInt(request.getParameter("delete"));
-        	trainingImpl userdelete=new trainingImpl();
+        	TrainingImpl userdelete=new TrainingImpl();
         
         	try {
 				userdelete.delete(deleteid);
@@ -76,7 +75,6 @@ public class Crud extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);

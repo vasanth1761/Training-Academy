@@ -10,23 +10,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.academy.dao.TrainingImpl;
 import com.academy.model.Questions;
-import com.academy.model.VideoInsert;
 
 /**
- * Servlet implementation class Test
+ * Servlet implementation class ViewQuestions
  */
-@WebServlet("/Test")
-public class Test extends HttpServlet {
+@WebServlet("/ViewQuestions")
+public class ViewQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Test() {
+    public ViewQuestions() {
         super();
 
     }
@@ -34,51 +32,46 @@ public class Test extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		TrainingImpl getquestion= new TrainingImpl();
+		try {
+			List<Questions>questions=getquestion.getAllQuestionsByCategory();
+			request.setAttribute("questions",questions);
+		
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		 RequestDispatcher req=request.getRequestDispatcher("viewquestion.jsp");
+ 		req.forward(request, response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		HttpSession session = request.getSession(false);
-		String category=(String) session.getAttribute("course");
-		TrainingImpl testop= new TrainingImpl();
-		switch(category)
-		{
-		case"java":
-		{   
+		
+		
+		TrainingImpl search=new TrainingImpl();
+		String action=request.getParameter("action");
+        if(action!=null)
+        switch(action)
+        {
+        case"search":
+		String name=request.getParameter("searchname");
 			try {
-				List<Questions>output=testop.getAllQuestionsByCategory(category);
-				request.setAttribute("testop",output);
+				List<Questions>obj=search.search(name);
+	            request.setAttribute("questions", obj);
+				
 			} catch (ClassNotFoundException | SQLException e) {
-
 				e.printStackTrace();
 			}
-			 RequestDispatcher dispatcher = request.getRequestDispatcher("questionoutput.jsp");
-	            dispatcher.forward(request, response);
-	            break;
-		}
-		case"html":
-		{
-			try {
-				List<Questions>output=testop.getAllQuestionsByCategory(category);
-				request.setAttribute("testop",output);
-			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 RequestDispatcher dispatcher = request.getRequestDispatcher("questionoutput.jsp");
-	            dispatcher.forward(request, response);
-	            break;
-		}
+			RequestDispatcher req=request.getRequestDispatcher("viewquestion.jsp");
+    		req.forward(request, response);
+	    
 	}
 
 }
 }
-

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Course;
 import com.academy.model.TrainingTable;
 
@@ -19,13 +19,13 @@ import com.academy.model.TrainingTable;
  * Servlet implementation class courseDetails
  */
 @WebServlet("/courseDetails")
-public class courseDetails extends HttpServlet {
+public class CourseDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public courseDetails() {
+    public CourseDetails() {
         super();
 
     }
@@ -42,7 +42,7 @@ public class courseDetails extends HttpServlet {
 		
 		case "java":
 		{
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			int id=4000;
 			String courseName =action;
 			LocalDate d=LocalDate.now();
@@ -71,7 +71,7 @@ public class courseDetails extends HttpServlet {
 		
 		case "html":
 		{
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			int id=4001;
 			String courseName =action;
 			LocalDate d=LocalDate.now();
@@ -99,7 +99,7 @@ public class courseDetails extends HttpServlet {
 		
 		case"css":
 		{
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			int id=4002;
 			String courseName =action;
 			LocalDate d=LocalDate.now();
@@ -127,7 +127,7 @@ public class courseDetails extends HttpServlet {
 		
 		case"angular":
 		{
-			trainingImpl obj = new trainingImpl();
+			TrainingImpl obj = new TrainingImpl();
 			int id=4003;
 			String courseName =action;
 			LocalDate d=LocalDate.now();
@@ -152,8 +152,7 @@ public class courseDetails extends HttpServlet {
 			}
 		    break;
 		}
-		default:
-			response.sendRedirect("readytopay.jsp");
+		
 		
 		}
 		

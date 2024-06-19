@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.academy.dao.trainingImpl;
+import com.academy.dao.TrainingImpl;
 import com.academy.model.Questions;
 
 
@@ -37,7 +37,7 @@ public class Question extends HttpServlet {
 	 */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        trainingImpl inserttable = new trainingImpl();
+        TrainingImpl inserttable = new TrainingImpl();
         Questions insert = new Questions();
         
         String question = request.getParameter("question");
@@ -60,7 +60,7 @@ public class Question extends HttpServlet {
         try {
             inserttable.insertQuestion(insert);
             String category = insert.getCourse();
-            List<Questions> questions = inserttable.getAllQuestionsByCategory(category);
+           List<Questions> questions = inserttable.getAllQuestionsByCategory(category);
             request.setAttribute("questions", questions);
             RequestDispatcher dispatcher = request.getRequestDispatcher("javaquestions.jsp");
             dispatcher.forward(request, response);
