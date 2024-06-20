@@ -78,6 +78,8 @@
             <th>Option D</th>
             <th>Correct Answer</th> 
             <th>Course Name</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         <%
         List<Questions> questions = (List<Questions>) request.getAttribute("questions");
@@ -94,6 +96,19 @@
             <td><%= question.getOptionD() %></td>
             <td><%= question.getCorrectAnswer() %></td>
             <td><%= question.getCourse() %></td>
+            <td>
+			
+			<input type="hidden" name="updateid" value="<%=question.getId() %>">
+			<button type="submit" title="delete" onclick="location.href='Update.jsp?updateid=<%= question.getId() %> '">Update</button>
+			
+			</td>
+			<td>
+			<form action="ViewQuestions" method="post">
+			<input type="hidden" name="action" value="Delete">
+			<input type="hidden" name="delete" value=<%=question.getId()%>>
+			<button type="submit" title="delete">Delete</button>
+			</td>
+			</form>
         </tr>
         <% } %>
     </table>

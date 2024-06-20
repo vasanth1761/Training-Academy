@@ -13,21 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.academy.dao.TrainingImpl;
 import com.academy.model.Questions;
-
-
-
+import com.academy.model.VideoInsert;
 
 /**
- * Servlet implementation class ViewQuestions
+ * Servlet implementation class ViewVideos
  */
-@WebServlet("/ViewQuestions")
-public class ViewQuestions extends HttpServlet {
+@WebServlet("/ViewVideos")
+public class ViewVideos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewQuestions() {
+    public ViewVideos() {
         super();
 
     }
@@ -37,30 +35,29 @@ public class ViewQuestions extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		TrainingImpl getquestion= new TrainingImpl();
-		try {
-			List<Questions>questions=getquestion.getAllQuestionsByCategory();
-			request.setAttribute("questions",questions);
-		
-		} catch (ClassNotFoundException | SQLException e) {
 
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		TrainingImpl getVideos= new TrainingImpl();
+		try {
+			List<VideoInsert>Videos=getVideos.getAllVideo();
+			request.setAttribute("Videos", Videos);
+		} catch (ClassNotFoundException | SQLException e) {
+		
 			e.printStackTrace();
 		}
-		 RequestDispatcher req=request.getRequestDispatcher("viewquestion.jsp");
+		RequestDispatcher req=request.getRequestDispatcher("viewVideos.jsp");
  		req.forward(request, response);
-
+		
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	@Override
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		TrainingImpl search=new TrainingImpl();
+		TrainingImpl getVideos= new TrainingImpl();
 		String action=request.getParameter("action");
         if(action!=null)
         switch(action)
@@ -69,7 +66,7 @@ public class ViewQuestions extends HttpServlet {
         {
 		String name=request.getParameter("searchname");
 			try {
-				List<Questions>obj=search.search(name);
+				List<VideoInsert>obj=getVideos.search(name);
 	            request.setAttribute("questions", obj);
 				
 			} catch (ClassNotFoundException | SQLException e) {
@@ -82,16 +79,13 @@ public class ViewQuestions extends HttpServlet {
         case"update":
     	{
     		
-    	 Questions question=new Questions();
+    	 VideoInsert videos=new VideoInsert();
     	 String upid=request.getParameter("updateid");
     	 System.out.println(upid);
-    	 question.setId(upid);
-    	 question.setQuestion(request.getParameter("Question"));
-    	 question.setOptionA(request.getParameter("OptionA"));
-    	 question.setOptionB(request.getParameter("OptionB"));
-    	 question.setOptionC(request.getParameter("OptionC"));
-    	 question.setOptionD(request.getParameter("OptionD"));
-    	 question.setCorrectAnswer(request.getParameter("CorrectAnswer"));
+    	 videos.s(upid);
+    	 videos.setQuestion(request.getParameter("Title"));
+    	 question.setOptionA(request.getParameter("Video"));
+    	 
     	 TrainingImpl updateQuestion=new TrainingImpl();
     	 try {
 			updateQuestion.updateQ(question, upid);
@@ -141,3 +135,6 @@ public class ViewQuestions extends HttpServlet {
 }
 }
 }
+
+
+

@@ -70,7 +70,7 @@ public class Test extends HttpServlet {
 				List<Questions>output=testop.getAllQuestionsByCategory(category);
 				request.setAttribute("testop",output);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("questionoutput.jsp");

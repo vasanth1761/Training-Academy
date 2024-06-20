@@ -87,7 +87,7 @@
             <div class="form-group">
                 <label for="correctAnswer">Correct Answer:</label>
 
-                    <option value="">Select correct answer</option>
+                   <!--  <option value="">Select correct answer</option>
                     <option value="A">Option 1</option>
                     <option value="B">Option 2</option>
                     <option value="C">Option 3</option>
@@ -95,7 +95,7 @@
                 </select>
                 <input type="text" id="option4" name="option4" required>
            
- -->    
+ -->     -->
              <input type="text" id="correctAnswer" name="correctAnswer" required>
          </div>
             <button type="submit" class="insert-btn">Insert</button>

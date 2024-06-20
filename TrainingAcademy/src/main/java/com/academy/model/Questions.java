@@ -2,14 +2,14 @@ package com.academy.model;
 
 public class Questions {
 
-		public String course;
-	    public String question;
-	    public String optionA;
-	    public String optionB;
-	    public String optionC;
-	    public String optionD;
-	    public String correctAnswer;
-	    public String id;
+		String course;
+	    String question;
+	    String optionA;
+	    String optionB;
+	    String optionC;
+	    String optionD;
+	    String correctAnswer;
+	    String id;
 	    
 
 	    
@@ -34,8 +34,8 @@ public class Questions {
 		}
 
 
-		public void setId(String id) {
-			this.id = id;
+		public void setId(String upid) {
+			this.id = upid;
 		}
 
 
@@ -112,7 +112,7 @@ public class Questions {
 
 
 		public Questions() {
-			// TODO Auto-generated constructor stub
+
 		}
 
 

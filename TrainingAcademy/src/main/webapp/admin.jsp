@@ -119,7 +119,7 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="insertquestion.jsp">Add Question</a></li>
         <li><a href="insertvideo.jsp">Add Video</a></li>
-        <li><a href="Comment.jsp">View videos</a></li>
+        <li><a href="ViewVideos">View videos</a></li>
         <li><a href="ViewQuestions">View questions</a></li>
         
     </ul>

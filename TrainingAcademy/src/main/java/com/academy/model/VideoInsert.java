@@ -34,7 +34,7 @@ public class VideoInsert {
 			this.category = category;
 		}
 		public VideoInsert() {
-			// TODO Auto-generated constructor stub
+
 		}
 		public void setCategory(String category) {
 			this.category = category;

@@ -45,7 +45,7 @@ public class ResultTable {
 		this.percentage = percentage;
 	}
 	public ResultTable() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 
